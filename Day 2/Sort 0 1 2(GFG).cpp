@@ -33,5 +33,45 @@ class Solution
             a[i]=2;
         }
     }
+  /*TC: O(n)
+    SC: O(1)*/  
+    
+  /*This approach is based on the following idea:
+
+The problem is similar to "Segregate 0s and 1s in an array".
+The problem was posed with three colors, here `0', `1' and `2'. The array is divided into four sections: 
+arr[1] to arr[low - 1]
+arr[low] to arr[mid - 1]
+arr[mid] to arr[high - 1]
+arr[high] to arr[n]
+If the ith element is 0 then swap the element to the low range.
+Similarly, if the element is 1 then keep it as it is.
+If the element is 2 then swap it with an element in high range.*/
+    class Solution
+{
+    public:
+    void sort012(int a[], int n)
+    {
+        // code here 
+        int ptr1=0,ptr2=n-1;
+        int i=0;
+        while(i<=ptr2){
+            if(a[i]==0){
+                swap(a[i],a[ptr1]);
+                i++;
+                ptr1++;
+            }
+            else if(a[i]==2){
+                swap(a[i],a[ptr2]);
+                ptr2--;
+            }
+            else{
+                i++;
+            }
+        }
+    }
     
 };
+
+/*TC: O(n)
+  SC: O(1)*/
